@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Bot Hosting</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #080d18;
+      color: white;
+    }
+
+    header {
+      background: #111a2b;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid #26344d;
+    }
+
+    header h1 {
+      color: #5b9cff;
+      margin: 0;
+    }
+
+    header p {
+      color: #9caec8;
+    }
+
+    .container {
+      max-width: 750px;
+      margin: 25px auto;
+      padding: 15px;
+    }
+
+    .card {
+      background: #111a2b;
+      border: 1px solid #26344d;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #70aaff;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 13px;
+      margin-top: 10px;
+      border-radius: 9px;
+      border: 1px solid #354766;
+      font-size: 16px;
+    }
+
+    input {
+      background: #080f1e;
+      color: white;
+    }
+
+    button {
+      background: #4588ff;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+    }
+
+    button:hover {
+      background: #2868d8;
+    }
+
+    .stop {
+      background: #b63850;
+    }
+
+    .bot {
+      background: #080f1e;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 12px;
+      border: 1px solid #26344d;
+    }
+
+    .status {
+      color: #70edc3;
+      margin: 10px 0;
+    }
+
+    pre {
+      background: #050912;
+      color: #c6d7ef;
+      padding: 15px;
+      border-radius: 10px;
+      min-height: 100px;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    small {
+      color: #9caec8;
+    }
+
+    footer {
+      text-align: center;
+      color: #71819b;
+      padding: 25px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>My Bot Hosting</h1>
+  <p>لوحة استضافة وإدارة بوتات Discord.js</p>
+</header>
+
+<div class="container">
+
+  <section class="card" id="login">
+    <h2>تسجيل الدخول</h2>
+
+    <form id="loginForm">
+      <input
+        id="password"
+        type="password"
+        placeholder="كلمة مرور الإدارة"
+        required
+      >
+
+      <button type="submit">دخول</button>
+    </form>
+  </section>
+
+  <main id="dashboard" class="hidden">
+
+    <section class="card">
+      <h2>رفع بوت جديد</h2>
+
+      <form id="uploadForm">
+        <input
+          name="name"
+          placeholder="اسم البوت"
+          pattern="[a-zA-Z0-9_-]{1,40}"
+          required
+        >
+
+        <input
+          name="archive"
+          type="file"
+          accept=".zip"
+          required
+        >
+
+        <button type="submit">رفع البوت</button>
+      </form>
+
+      <small>
+        ارفع ملف ZIP يحتوي package.json و index.js.
+      </small>
+    </section>
+
+    <section class="card">
+      <h2>بوتاتي</h2>
+      <div id="bots">جاري تحميل البوتات...</div>
+    </section>
+
+    <section class="card">
+      <h2 id="consoleTitle">Console</h2>
+      <button type="button" id="refresh">تحديث السجلات</button>
+      <pre id="logs">اختر بوتاً لعرض السجلات.</pre>
+    </section>
+
+    <button type="button" id="logout" class="stop">
+      تسجيل الخروج
+    </button>
+
+  </main>
+
+  <p id="message"></p>
+
+</div>
+
+<footer>
+  My Bot Hosting © 2026
+</footer>
+
+<script src="/app.js"></script>
+
+</body>
+</html>
